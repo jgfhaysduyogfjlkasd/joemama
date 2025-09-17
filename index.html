@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Historia Roleplay</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .layered-bg {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            z-index: 2;
+        }
+        .layered-bg::before, .layered-bg::after, .layered-bg > div {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+        }
+        .layered-bg > div:nth-child(1) {
+            opacity: 0.3;
+            background: radial-gradient(165.83% 93.28% at 93.28% 91.11%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+        }
+        .layered-bg > div:nth-child(2) {
+            opacity: 0.3;
+            background: radial-gradient(301.33% 169.50% at 0.00% 100.00%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+        }
+        .layered-bg > div:nth-child(3) {
+            opacity: 0.3;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+        }
+        .layered-bg::after {
+            background: rgba(0, 0, 0, 0.45);
+        }
+
+        .background {
+            z-index: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+            background-color: #111;
+            filter: blur(3px) grayscale(100%);
+            transform: scale(1.1);
+            animation: moveHorizontally 40s infinite;
+            transition: opacity 3s ease;
+            opacity: 1;
+            will-change: opacity, transform;
+        }
+
+        #background2 {
+            opacity: 0;
+        }
+
+        @keyframes moveHorizontally {
+            0% { transform: translateX(0) scale(1.1); }
+            50% { transform: translateX(-2.5%) scale(1.1); }
+            100% { transform: translateX(0) scale(1.1); }
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            background: rgba(0, 0, 0, 0.30); /* Static dark overlay */
+        }
+
+        .overlay::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(100% 70% at 0% 100%, rgba(255, 255, 0, 0.47) 0%, rgba(200, 200, 0, 0.31) 50%, rgba(0, 0, 0, 0.00) 100%); /* Yellow bottom-left */
+            background-position: 0% 100%;
+            background-size: 100% 100%; /* Fixed size */
+            animation: pulseGlow 6.8s ease-in-out infinite; /* Slowed by 35% */
+        }
+
+        .overlay::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(100% 70% at 100% 0%, rgba(100, 149, 237, 0.47) 0%, rgba(70, 130, 180, 0.31) 50%, rgba(0, 0, 0, 0.00) 100%); /* Blue top-right */
+            background-position: 100% 0%;
+            background-size: 100% 100%; /* Fixed size */
+            animation: pulseGlow 6.8s ease-in-out infinite; /* Slowed by 35% */
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                opacity: 0.1;
+            }
+            50% {
+                opacity: 0.525; /* Reduced by 25% from 0.7 */
+            }
+            100% {
+                opacity: 0.1;
+            }
+        }
+
+        .noise {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./images/noise.png');
+            opacity: 0.1;
+            z-index: 3;
+        }
+
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80%;
+            max-width: 600px;
+            z-index: 4;
+        }
+
+        .toolbar {
+            width: 100%;
+        }
+
+        #download-box {
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 200;
+            color: rgb(255, 255, 255);
+            backdrop-filter: blur(5px);
+            background: rgba(25, 25, 25, 0.6);
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+            position: relative;
+            text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+        }
+
+        .bold-text {
+            font-weight: 700; /* Bold for Historia Roleplay */
+        }
+
+        .warning-text {
+            font-size: 10.1px;
+            font-weight: 700;
+            color: rgba(255, 99, 71, 0.85); /* Soft tomato-red */
+            margin-top: 10px;
+            text-transform: uppercase; /* Capitalized text */
+            text-align: center; /* Centered alignment */
+        }
+
+        .beta-text {
+            color: rgb(27, 142, 167); /* Teal #1b8ea7 */
+            font-weight: 700;
+            margin-left: 5px;
+        }
+
+        .watermark {
+            width: min(414px, 110.4vw); /* Increased by 20% from min(345px, 92vw) */
+            margin-bottom: 10px; /* Reduced to move logo and box closer */
+            opacity: 0.9;
+            filter: drop-shadow(0 0 5px rgba(27, 142, 167, 0.5)); /* Teal glow */
+            position: relative;
+        }
+
+        .watermark::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            height: 90%;
+            background: radial-gradient(circle at center, rgba(27, 142, 167, 0.2) 0%, rgba(0, 0, 0, 0) 70%); /* Teal glow */
+            z-index: -1;
+        }
+
+        @media (max-width: 480px) {
+            #download-box {
+                font-size: 12px;
+                padding: 10px 15px;
+            }
+            .warning-text {
+                font-size: 9px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background" id="background1"></div>
+    <div class="background" id="background2"></div>
+    <div class="layered-bg">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="overlay"></div>
+    <div class="noise"></div>
+    <div class="container">
+        <img src="./images/historia.png" class="watermark" alt="Historia Roleplay Logo">
+        <div class="toolbar">
+            <div id="download-box">
+                Welcome to <span class="bold-text">Historia Roleplay</span> <span class="beta-text">OPEN BETA</span>! In order to ensure your experience on our server isn't interrupted by errors, please allow for all of our server content to be downloaded to your game. We promise it'll be worth the wait. Enjoy your stay!
+                <div class="warning-text">
+                    WARNING: THIS SERVER REQUIRES THE 64-BIT BETA VERSION OF GARRY'S MOD FOR THE BEST EXPERIENCE.
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const images = [
+                './images/1.jpg',
+                './images/2.jpg',
+                './images/3.jpg',
+                './images/4.jpg'
+            ];
+
+            function preloadImages(imageUrls, callback) {
+                let loaded = 0;
+                imageUrls.forEach(url => {
+                    const img = new Image();
+                    img.src = url;
+                    img.onload = () => {
+                        loaded++;
+                        if (loaded === imageUrls.length) callback();
+                    };
+                    img.onerror = () => {
+                        console.error(`Failed to load image: ${url}`);
+                        loaded++;
+                        if (loaded === imageUrls.length) callback();
+                    };
+                });
+            }
+
+            preloadImages(images, () => {
+                const backgroundImage1 = document.getElementById('background1');
+                const backgroundImage2 = document.getElementById('background2');
+                let currentImageIndex = Math.floor(images.length * Math.random());
+                let isBackground1OnTop = true;
+
+                function setBackground() {
+                    if (isBackground1OnTop) {
+                        backgroundImage1.style.backgroundImage = `url(${images[currentImageIndex]})`;
+                        backgroundImage1.style.opacity = '1';
+                        backgroundImage2.style.opacity = '0';
+                    } else {
+                        backgroundImage2.style.backgroundImage = `url(${images[currentImageIndex]})`;
+                        backgroundImage2.style.opacity = '1';
+                        backgroundImage1.style.opacity = '0';
+                    }
+                    isBackground1OnTop = !isBackground1OnTop;
+                    currentImageIndex = (currentImageIndex + 1) % images.length;
+                }
+
+                setBackground();
+                setInterval(setBackground, 10000);
+            });
+        });
+    </script>
+</body>
+</html>
