@@ -145,6 +145,7 @@
     <div class="layered-bg"><div></div><div></div><div></div></div>
     <div class="overlay"></div>
     <div class="noise"></div>
+    <audio id="bgm" src="./audio/music.ogg" preload="auto" loop></audio>
     <div class="container">
         <img src="./images/historia.png" class="watermark" alt="Historia Roleplay Logo">
         <div class="toolbar">
@@ -159,6 +160,19 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            const bgm = document.getElementById('bgm');
+            if (bgm) {
+                bgm.volume = 0.25;
+                const tryPlay = () => {
+                    const playPromise = bgm.play();
+                    if (playPromise && typeof playPromise.catch === 'function') {
+                        playPromise.catch(() => {});
+                    }
+                };
+                tryPlay();
+                document.addEventListener('click', tryPlay, { once: true });
+                document.addEventListener('keydown', tryPlay, { once: true });
+            }
             const images = [
                 './images/1.jpg',
                 './images/2.jpg',
