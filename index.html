@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loading Historia Roleplay</title>
+    <title>Loading Iconic Roleplay</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;700&display=swap" rel="stylesheet">
     <style>
         body, html {
@@ -103,6 +103,10 @@
             box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
             position: relative;
             text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+            text-align: justify;
+            text-align-last: left;
+            text-justify: inter-word;
+            hyphens: auto;
         }
 
         .bold-text { font-weight: 700; }
@@ -114,13 +118,18 @@
             text-transform: uppercase;
             text-align: center;
         }
-        .beta-text { color: rgb(27, 142, 167); font-weight: 700; margin-left: 5px; }
+        .beta-text {
+            color: rgb(161, 75, 190);
+            font-weight: 700;
+            margin-left: 5px;
+            text-shadow: 0 0 6px rgba(161, 75, 190, 0.9);
+        }
 
         .watermark {
             width: min(414px, 110.4vw);
             margin-bottom: 10px;
             opacity: 0.9;
-            filter: drop-shadow(0 0 5px rgba(27, 142, 167, 0.5));
+            filter: drop-shadow(0 0 5px rgba(161, 75, 190, 0.5));
             position: relative;
         }
         .watermark::before {
@@ -129,7 +138,7 @@
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
             width: 90%; height: 90%;
-            background: radial-gradient(circle at center, rgba(27, 142, 167, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+            background: radial-gradient(circle at center, rgba(161, 75, 190, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
             z-index: -1;
         }
 
@@ -147,10 +156,10 @@
     <div class="noise"></div>
     <audio id="bgm" src="./audio/music.ogg" preload="auto" loop></audio>
     <div class="container">
-        <img src="./images/historia.png" class="watermark" alt="Historia Roleplay Logo">
+        <img src="./images/historia.png" class="watermark" alt="Iconic Roleplay Logo">
         <div class="toolbar">
             <div id="download-box">
-                Welcome to <span class="bold-text">Historia Roleplay</span> <span class="beta-text">OPEN BETA</span>! In order to ensure your experience on our server isn't interrupted by errors, please allow for all of our server content to be downloaded to your game. We promise it'll be worth the wait. Enjoy your stay!
+                Welcome to <span class="bold-text">Iconic Roleplay</span> <span class="beta-text">Development Server</span>! In order to ensure your experience on our server isn't interrupted by errors, please allow for all of our server content to be downloaded to your game. We promise it'll be worth the wait. Enjoy your stay!
                 <div class="warning-text">
                     WARNING: THIS SERVER REQUIRES THE 64-BIT BETA VERSION OF GARRY'S MOD FOR THE BEST EXPERIENCE.
                 </div>
